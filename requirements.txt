@@ -1,0 +1,4 @@
+google-generativeai
+pymupdf
+numpy
+openpyxl

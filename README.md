@@ -1,25 +1,25 @@
-# 🤖 Generative AI Lab Experiments (LLM 2nd Sem)
+# Generative AI Lab Experiments (LLM 2nd Sem)
 
 [![GitHub License](https://img.shields.io/github/license/Soum-Code/GenAI-Lab-Experiments)](https://github.com/Soum-Code/GenAI-Lab-Experiments/blob/main/LICENSE)
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)
 [![Gemini API](https://img.shields.io/badge/API-Google%20Gemini-orange)](https://ai.google.dev/)
 
-A professional, comprehensive collection of 11 practical experiments for students specializing in **Large Language Models (LLM)**. This repository covers everything from basic parameter tuning to building advanced Retrieval-Augmented Generation (RAG) systems.
+A professional, comprehensive collection of 11 practical experiments for students specializing in Large Language Models (LLM). This repository covers everything from basic parameter tuning to building advanced Retrieval-Augmented Generation (RAG) systems.
 
 ---
 
-## 📌 Table of Contents
-1.  [Project Overview](#-project-overview)
-2.  [System Architecture (RAG Workflow)](#-system-architecture-rag-workflow)
-3.  [Technology Stack](#-technology-stack)
-4.  [Experiment Deep Dive (Descriptions & SLOs)](#-experiment-deep-dive-descriptions--slos)
-5.  [Getting Started](#-getting-started)
-6.  [Project Workflow](#-project-workflow)
-7.  [License](#-license)
+## Table of Contents
+1.  [Project Overview](#project-overview)
+2.  [System Architecture (RAG Workflow)](#system-architecture-rag-workflow)
+3.  [Technology Stack](#technology-stack)
+4.  [Experiment Deep Dive (Descriptions & SLOs)](#experiment-deep-dive-descriptions--slos)
+5.  [Getting Started](#getting-started)
+6.  [Project Workflow](#project-workflow)
+7.  [License](#license)
 
 ---
 
-## 📖 Project Overview
+## Project Overview
 This repository provides a hands-on learning environment for modern Generative AI. The experiments are designed to guide students through:
 - **Prompt Engineering**: Mastering Zero-shot, Few-shot, and Chain-of-Thought (CoT).
 - **Retrieval Systems**: Implementing keyword-based and semantic vector search.
@@ -28,7 +28,7 @@ This repository provides a hands-on learning environment for modern Generative A
 
 ---
 
-## 🏗 System Architecture (RAG Workflow)
+## System Architecture (RAG Workflow)
 
 The following diagram illustrates the core RAG pipeline implemented in **Experiment 7 and 8**:
 
@@ -48,16 +48,16 @@ graph TD
 
 ---
 
-## 🛠 Technology Stack
+## Technology Stack
 - **Languages**: Python 3.8+
 - **LLM/Embeddings**: Google Generative AI (Gemini SDK)
 - **Data Processing**: `PyMuPDF` (Clinical PDF Parsing), `NumPy` (Vector Math)
-- **Strucutured Data**: `openpyxl` (Excel Automation)
+- **Structured Data**: `openpyxl` (Excel Automation)
 - **Evaluations**: Custom LLM-as-a-judge scoring frameworks.
 
 ---
 
-## 🔬 Experiment Deep Dive (Descriptions & SLOs)
+## Experiment Deep Dive (Descriptions & SLOs)
 
 | Experiment | Focus Area | Description | Student Learning Outcome (SLO) |
 | :--- | :--- | :--- | :--- |
@@ -75,7 +75,7 @@ graph TD
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Prerequisites
 - Python 3.8 or higher.
@@ -88,7 +88,7 @@ git clone https://github.com/Soum-Code/GenAI-Lab-Experiments.git
 cd GenAI-Lab-Experiments
 
 # Install required packages
-pip install google-generativeai pymupdf numpy openpyxl
+pip install -r requirements.txt
 ```
 
 ### 3. Configuration
@@ -99,7 +99,7 @@ API_KEY = "YOUR_GEMINI_API_KEY"
 
 ---
 
-## 🔄 Project Workflow
+## Project Workflow
 The labs follow a progressive path:
 1.  **Level 1 (Foundations)**: Parameters and basic prompting (1, 11, 12).
 2.  **Level 2 (Data Engineering)**: Parsing medical documents and generating datasets (5, 6).
@@ -108,5 +108,5 @@ The labs follow a progressive path:
 
 ---
 
-## ⚖️ License
+## License
 This project is licensed under the **MIT License**. Feel free to use it for academic and research purposes.
