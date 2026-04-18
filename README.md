@@ -1,112 +1,87 @@
-# Generative AI Lab Experiments (LLM 2nd Sem)
+# RAG Systems and Prompt Engineering — Practical Implementations
 
-[![GitHub License](https://img.shields.io/github/license/Soum-Code/GenAI-Lab-Experiments)](https://github.com/Soum-Code/GenAI-Lab-Experiments/blob/main/LICENSE)
-[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)
-[![Gemini API](https://img.shields.io/badge/API-Google%20Gemini-orange)](https://ai.google.dev/)
-
-A professional, comprehensive collection of 11 practical experiments for students specializing in Large Language Models (LLM). This repository covers everything from basic parameter tuning to building advanced Retrieval-Augmented Generation (RAG) systems.
+A collection of 11 end-to-end implementations covering RAG pipelines, semantic search, prompt engineering, and model evaluation using the Google Gemini API.
 
 ---
 
-## Table of Contents
-1.  [Project Overview](#project-overview)
-2.  [System Architecture (RAG Workflow)](#system-architecture-rag-workflow)
-3.  [Technology Stack](#technology-stack)
-4.  [Experiment Deep Dive (Descriptions & SLOs)](#experiment-deep-dive-descriptions--slos)
-5.  [Getting Started](#getting-started)
-6.  [Project Workflow](#project-workflow)
-7.  [License](#license)
+## What this covers
+
+- **RAG Pipeline** — Full retrieval-augmented generation using Gemini embeddings and cosine similarity
+- **RAG Triad Evaluation** — Faithfulness, relevance, and context precision scoring to measure and reduce hallucinations
+- **Semantic vs Keyword Search** — BM25 keyword retrieval compared against vector embedding search
+- **Prompt Engineering** — Zero-shot, few-shot, and Chain-of-Thought comparisons with quantified output differences
+- **Clinical Document Parsing** — Extracting structured data from medical PDF reports using PyMuPDF
+- **Synthetic Dataset Generation** — Automated Q&A bank creation exported to Excel using openpyxl
+- **LLM Parameter Analysis** — Temperature and top_p comparisons for stochastic vs deterministic output
 
 ---
 
-## Project Overview
-This repository provides a hands-on learning environment for modern Generative AI. The experiments are designed to guide students through:
-- **Prompt Engineering**: Mastering Zero-shot, Few-shot, and Chain-of-Thought (CoT).
-- **Retrieval Systems**: Implementing keyword-based and semantic vector search.
-- **Data Automation**: Generating synthetic datasets and parsing clinical reports.
-- **Evaluation**: Quantifying AI performance using the RAG Triad.
+## RAG pipeline architecture
 
----
-
-## System Architecture (RAG Workflow)
-
-The following diagram illustrates the core RAG pipeline implemented in **Experiment 7 and 8**:
-
-```mermaid
-graph TD
-    A[Unstructured Data: PDF/TXT] --> B[Text Chunking]
-    B --> C[Gemini Embedding 001]
-    C --> D[Vector DB / In-Memory Store]
-    E[User Query] --> F[Query Embedding]
-    F --> G[Semantic Search: Cosine Similarity]
-    G --> H[Top-K Context Retrieval]
-    H --> I[Prompt Construction: Context + Query]
-    I --> J[Gemini 1.5 Pro / Flash Model]
-    J --> K[Final Answer Generation]
-    K --> L[Evaluation: RAG Triad]
+```
+Unstructured Data (PDF/TXT)
+        |
+   Text Chunking
+        |
+ Gemini Embedding-001
+        |
+  In-Memory Vector Store
+        |
+   User Query --> Query Embedding --> Cosine Similarity Search
+                                              |
+                                     Top-K Context Retrieval
+                                              |
+                                   Prompt: Context + Query
+                                              |
+                                    Gemini 1.5 Pro / Flash
+                                              |
+                                    Final Answer + RAG Triad Score
 ```
 
 ---
 
-## Technology Stack
-- **Languages**: Python 3.8+
-- **LLM/Embeddings**: Google Generative AI (Gemini SDK)
-- **Data Processing**: `PyMuPDF` (Clinical PDF Parsing), `NumPy` (Vector Math)
-- **Structured Data**: `openpyxl` (Excel Automation)
-- **Evaluations**: Custom LLM-as-a-judge scoring frameworks.
+## Tech stack
+
+Python · Google Generative AI (Gemini SDK) · PyMuPDF · NumPy · openpyxl
 
 ---
 
-## Experiment Deep Dive (Descriptions & SLOs)
+## Setup
 
-| Experiment | Focus Area | Description | Student Learning Outcome (SLO) |
-| :--- | :--- | :--- | :--- |
-| **Exp 1** | **LLM Params** | Compares `temperature` and `top_p` variations. | Understand stochastic vs. deterministic AI generation. |
-| **Exp 2** | **QA Metrics** | Automated scoring for Toxicity, Bias, and Fluency. | Build automated quality gates for model evaluation. |
-| **Exp 3** | **Lexical Search**| Traditional BM25/Keyword identification. | Recognize the limitations of exact-match retrieval. |
-| **Exp 4** | **Semantic Search**| Vector embeddings + Cosine Similarity. | Learn to perform intent-based semantic retrieval. |
-| **Exp 5** | **Document AI** | Parsing and structuring medical reports from PDFs.| Apply clinical data extraction with domain-aware LLMs. |
-| **Exp 6** | **Dataset Gen** | Synthetic Q&A bank exported to Excel. | Automate high-quality dataset creation for ML. |
-| **Exp 7** | **RAG Pipeline** | End-to-end documentation retrieval answering. | Construct full-chain retrieval-augmented applications. |
-| **Exp 8** | **RAG Triad** | Faithfulness, Relevance, and Context Precision. | Quantify retrieval quality and mitigate hallucinations. |
-| **Exp 11** | **Prompt Strat** | Zero-shot vs. Few-shot comparisons. | Master context-window engineering for performance. |
-| **Exp 12** | **CoT Prompting** | Reasoning-path elicitation for logic tasks. | Design reasoning chains for complex task execution. |
-| **Exp 13** | **Fine-Tuning** | Supervised Fine-Tuning (SFT) data prep logic. | Understand the lifecycle of specialty model alignment. |
-
----
-
-## Getting Started
-
-### 1. Prerequisites
-- Python 3.8 or higher.
-- A Google Cloud/AI Studio account for the [Gemini API Key](https://aistudio.google.com/).
-
-### 2. Installation
 ```bash
-# Clone the repository
 git clone https://github.com/Soum-Code/GenAI-Lab-Experiments.git
 cd GenAI-Lab-Experiments
-
-# Install required packages
 pip install -r requirements.txt
 ```
 
-### 3. Configuration
-Each script contains a configuration section. Replace the placeholder with your API Key:
+Replace the API key placeholder in each script:
+
 ```python
-API_KEY = "YOUR_GEMINI_API_KEY"
+API_KEY = "your_gemini_api_key_here"
 ```
+
+Get a free Gemini API key at [aistudio.google.com](https://aistudio.google.com).
 
 ---
 
-## Project Workflow
-The labs follow a progressive path:
-1.  **Level 1 (Foundations)**: Parameters and basic prompting (1, 11, 12).
-2.  **Level 2 (Data Engineering)**: Parsing medical documents and generating datasets (5, 6).
-3.  **Level 3 (Search & Retrieval)**: Comparing keyword vs. semantic search (3, 4).
-4.  **Level 4 (Advanced Systems)**: Building and evaluating the RAG architecture (7, 8, 2).
+## Implementations
+
+| # | Focus | What it builds |
+|---|---|---|
+| 1 | LLM Parameters | Temperature and top_p comparison across generation tasks |
+| 2 | QA Metrics | Automated toxicity, bias, and fluency scoring |
+| 3 | Lexical Search | BM25 keyword retrieval and its limitations |
+| 4 | Semantic Search | Vector embeddings with cosine similarity retrieval |
+| 5 | Document AI | Clinical PDF parsing and structured data extraction |
+| 6 | Dataset Generation | Synthetic Q&A export to Excel |
+| 7 | RAG Pipeline | End-to-end documentation retrieval and answering |
+| 8 | RAG Triad | Faithfulness, relevance, and context precision evaluation |
+| 11 | Prompt Strategy | Zero-shot vs few-shot performance comparison |
+| 12 | Chain-of-Thought | Reasoning path elicitation for logic tasks |
+| 13 | Fine-Tuning Prep | Supervised fine-tuning data preparation logic |
 
 ---
 
 ## License
-This project is licensed under the **MIT License**. Feel free to use it for academic and research purposes.
+
+MIT
